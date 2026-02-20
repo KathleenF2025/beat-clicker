@@ -1,25 +1,28 @@
-let score = 0;
-const scoreDisplay = document.getElementById("score");
-const target = document.getElementById("target");
+document.addEventListener("DOMContentLoaded", function () {
 
-let isVisible = false;
+  let score = 0;
+  const scoreDisplay = document.getElementById("score");
+  const target = document.getElementById("target");
 
-function showTarget() {
-  target.style.display = "block";
-  isVisible = true;
+  let isVisible = false;
 
-  setTimeout(() => {
-    target.style.display = "none";
-    isVisible = false;
-  }, 800); // target visible for 0.8 seconds
-}
+  function showTarget() {
+    target.style.display = "block";
+    isVisible = true;
 
-setInterval(showTarget, 2000); // appears every 2 seconds
-
-target.addEventListener("click", () => {
-  if (isVisible) {
-    score += 2; // bonus for clicking on time
-    scoreDisplay.textContent = score;
+    setTimeout(() => {
+      target.style.display = "none";
+      isVisible = false;
+    }, 800);
   }
-});
 
+  setInterval(showTarget, 2000);
+
+  target.addEventListener("click", () => {
+    if (isVisible) {
+      score += 2;
+      scoreDisplay.textContent = score;
+    }
+  });
+
+});
