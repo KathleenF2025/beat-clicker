@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
-    oscillator.type = "sawtooth";   // change to "sine" or "triangle" if softer
+    oscillator.type = "triangle";   // change to "sine" or "triangle" if softer
     oscillator.frequency.value = 600; // pitch
 
     gainNode.gain.value = 0.2; // volume
