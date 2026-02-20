@@ -5,14 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const target = document.getElementById("target");
   const gameArea = document.getElementById("game-area");
 
-  let isVisible = false;
-  let hideTimeout = null;
+  let lastSpawnTime = 0;
+  const visibleDuration = 1200;   // how long it counts as valid click
+  const spawnInterval = 2000;     // how often target appears
 
   function showTarget() {
 
     const areaWidth = gameArea.clientWidth;
     const areaHeight = gameArea.clientHeight;
-    const targetSize = 80;
+    const targetSize = 80; // must match CSS size
 
     const randomX = Math.floor(Math.random() * (areaWidth - targetSize));
     const randomY = Math.floor(Math.random() * (areaHeight - targetSize));
@@ -21,31 +22,29 @@ document.addEventListener("DOMContentLoaded", function () {
     target.style.top = randomY + "px";
 
     target.style.display = "block";
-    isVisible = true;
 
-    // Clear any previous hide timeout
-    if (hideTimeout) {
-      clearTimeout(hideTimeout);
-    }
+    lastSpawnTime = Date.now();
 
-    hideTimeout = setTimeout(() => {
+    setTimeout(() => {
       target.style.display = "none";
-      isVisible = false;
-    }, 1200);
+    }, visibleDuration);
   }
 
-  setInterval(showTarget, 2000);
+  setInterval(showTarget, spawnInterval);
 
   target.addEventListener("click", function () {
-    if (isVisible) {
+
+    const now = Date.now();
+    const timeSinceSpawn = now - lastSpawnTime;
+
+    if (timeSinceSpawn <= visibleDuration) {
       score += 2;
       scoreDisplay.textContent = score;
 
-      // Immediately hide after successful click
+      // optional: hide immediately after successful click
       target.style.display = "none";
-      isVisible = false;
     }
+
   });
 
 });
-
