@@ -11,25 +11,25 @@ document.addEventListener("DOMContentLoaded", function () {
   let gameInterval = null;
 
   const visibleDuration = 1200;
-  const spawnInterval = 2000;
+  let spawnInterval = 2000; // now adjustable
 
-  // 🎵 Create Audio Context
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
   function playBeat() {
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
-    oscillator.type = "triangle";   // change to "sine" or "triangle" if softer
-    oscillator.frequency.value = 600; // pitch
-
-    gainNode.gain.value = 0.2; // volume
+    oscillator.type = "sine";
+    oscillator.frequency.value = 600;
 
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
 
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+
     oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.2); // short beep
+    oscillator.stop(audioContext.currentTime + 0.15);
   }
 
   function showTarget() {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastSpawnTime = Date.now();
 
-    playBeat(); // 🎵 Play generated beat when target appears
+    playBeat();
 
     setTimeout(() => {
       target.style.display = "none";
@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   startBtn.addEventListener("click", function () {
     score = 0;
+    spawnInterval = 2000; // reset difficulty
     scoreDisplay.textContent = score;
 
-    // Resume audio context (required by browsers)
     if (audioContext.state === "suspended") {
       audioContext.resume();
     }
@@ -81,8 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
       score += 2;
       scoreDisplay.textContent = score;
       target.style.display = "none";
+
+      // 🎯 Difficulty increases every 10 points
+      if (score % 10 === 0 && spawnInterval > 800) {
+        spawnInterval -= 200;
+
+        clearInterval(gameInterval);
+        gameInterval = setInterval(showTarget, spawnInterval);
+      }
     }
   });
 
 });
-
