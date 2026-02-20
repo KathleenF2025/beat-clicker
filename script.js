@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     gainNode.connect(audioContext.destination);
 
     oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.08); // short beep
+    oscillator.stop(audioContext.currentTime + 0.2); // short beep
   }
 
   function showTarget() {
