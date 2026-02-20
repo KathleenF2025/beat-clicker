@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let lastSpawnTime = 0;
   let gameInterval = null;
 
-  const visibleDuration = 1200;
+  const visibleDuration = 800;
   let spawnInterval = 2000; // now adjustable
 
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       target.style.display = "none";
 
       // 🎯 Difficulty increases every 10 points
-      if (score % 10 === 0 && spawnInterval > 1200) {
+      if (score % 10 === 0 && spawnInterval > 1000) {
   spawnInterval -= 100;
 
         clearInterval(gameInterval);
