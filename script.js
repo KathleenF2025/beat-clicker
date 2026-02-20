@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+alert("Script is running");
 
   let score = 0;
   const scoreDisplay = document.getElementById("score");
