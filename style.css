@@ -1,48 +1,72 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
+  background: linear-gradient(135deg, #141E30, #243B55);
+  color: #ffffff;
   margin: 0;
   padding-top: 40px;
 }
 
+/* Title */
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+/* Controls section */
 .controls {
   margin-bottom: 20px;
 }
 
+/* Buttons */
 button {
-  padding: 10px 20px;
-  margin: 5px;
+  padding: 12px 24px;
+  margin: 8px;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #startBtn {
-  background-color: #4CAF50;
+  background: linear-gradient(45deg, #00c853, #64dd17);
   color: white;
+  box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4);
+}
+
+#startBtn:hover {
+  transform: translateY(-2px);
 }
 
 #stopBtn {
-  background-color: #f44336;
+  background: linear-gradient(45deg, #d50000, #ff1744);
   color: white;
+  box-shadow: 0 4px 10px rgba(213, 0, 0, 0.4);
 }
 
+#stopBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* Game area */
 #game-area {
   margin: 20px auto;
   width: 350px;
   height: 350px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Target */
 #target {
   width: 50px;
   height: 50px;
-  background-color: crimson;
+  background: radial-gradient(circle, #ff5252, #b71c1c);
   border-radius: 50%;
   position: absolute;
   display: none;
@@ -52,4 +76,4 @@ button {
 
 #target:active {
   transform: scale(0.9);
-}
+
