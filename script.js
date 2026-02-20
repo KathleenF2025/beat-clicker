@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 800);
 }
 
-  }
+  
 
   setInterval(showTarget, 2000);
 
