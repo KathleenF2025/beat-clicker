@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let isVisible = false;
 
+  
   function showTarget() {
-    function showTarget() {
   const gameArea = document.getElementById("game-area");
 
   // Get area dimensions
