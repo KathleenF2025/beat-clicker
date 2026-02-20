@@ -72,6 +72,17 @@ button {
   display: none;
   cursor: pointer;
   transition: transform 0.1s ease;
+
+  .instructions {
+  font-size: 18px;
+  margin: 15px auto;
+  padding: 8px 12px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
 }
 
 #target:active {
