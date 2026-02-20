@@ -72,8 +72,6 @@ button {
   display: none;
   cursor: pointer;
   transition: transform 0.1s ease;
-
-
 }
   .instructions {
   font-size: 18px;
@@ -86,5 +84,5 @@ button {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 #target:active {
-  transform: scale(0.9);
+  transform: scale(0.9);}
 
