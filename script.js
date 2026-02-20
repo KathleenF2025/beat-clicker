@@ -84,10 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 🎯 Difficulty increases every 10 points
       if (score % 10 === 0 && spawnInterval > 1000) {
+  
   spawnInterval -= 100;
 
-        clearInterval(gameInterval);
-        gameInterval = setInterval(showTarget, spawnInterval);
+  clearInterval(gameInterval);
+  gameInterval = setInterval(showTarget, spawnInterval);
+
+  // Make visible duration slightly shorter but proportional
+  visibleDuration = Math.max(600, visibleDuration - 50);
       }
     }
   });
