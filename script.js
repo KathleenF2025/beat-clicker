@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameArea = document.getElementById("game-area");
   const startBtn = document.getElementById("startBtn");
   const stopBtn = document.getElementById("stopBtn");
-  const bgMusic = document.getElementById("bgMusic");
 
   let lastSpawnTime = 0;
   let gameInterval = null;
@@ -14,10 +13,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const visibleDuration = 1200;
   const spawnInterval = 2000;
 
+  // 🎵 Create Audio Context
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+  function playBeat() {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.type = "square";   // change to "sine" or "triangle" if softer
+    oscillator.frequency.value = 600; // pitch
+
+    gainNode.gain.value = 0.2; // volume
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.08); // short beep
+  }
+
   function showTarget() {
     const areaWidth = gameArea.clientWidth;
     const areaHeight = gameArea.clientHeight;
-    const targetSize = 80;
+    const targetSize = 50;
 
     const randomX = Math.floor(Math.random() * (areaWidth - targetSize));
     const randomY = Math.floor(Math.random() * (areaHeight - targetSize));
@@ -28,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastSpawnTime = Date.now();
 
+    playBeat(); // 🎵 Play generated beat when target appears
+
     setTimeout(() => {
       target.style.display = "none";
     }, visibleDuration);
@@ -37,9 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
     score = 0;
     scoreDisplay.textContent = score;
 
+    // Resume audio context (required by browsers)
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+
     if (!gameInterval) {
       gameInterval = setInterval(showTarget, spawnInterval);
-      bgMusic.play();
     }
   });
 
@@ -47,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(gameInterval);
     gameInterval = null;
     target.style.display = "none";
-    bgMusic.pause();
-    bgMusic.currentTime = 0;
   });
 
   target.addEventListener("click", function () {
@@ -63,3 +85,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
