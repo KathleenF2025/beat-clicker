@@ -73,6 +73,8 @@ button {
   cursor: pointer;
   transition: transform 0.1s ease;
 
+
+}
   .instructions {
   font-size: 18px;
   margin: 15px auto;
@@ -83,8 +85,6 @@ button {
   color: #f5f5f5;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
-}
-
 #target:active {
   transform: scale(0.9);
 
