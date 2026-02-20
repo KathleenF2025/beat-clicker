@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   function showTarget() {
   const gameArea = document.getElementById("game-area");
+console.log("New position:", randomX, randomY);
 
   // Get area dimensions
   const areaWidth = gameArea.clientWidth;
