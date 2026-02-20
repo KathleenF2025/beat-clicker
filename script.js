@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
       target.style.display = "none";
 
       // 🎯 Difficulty increases every 10 points
-      if (score % 10 === 0 && spawnInterval > 800) {
-        spawnInterval -= 200;
+      if (score % 10 === 0 && spawnInterval > 1200) {
+  spawnInterval -= 100;
 
         clearInterval(gameInterval);
         gameInterval = setInterval(showTarget, spawnInterval);
