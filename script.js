@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hideTimeout = setTimeout(() => {
       target.style.display = "none";
       isVisible = false;
-    }, 800);
+    }, 1200);
   }
 
   setInterval(showTarget, 2000);
