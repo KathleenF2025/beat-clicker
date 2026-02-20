@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let score = 0;
   const scoreDisplay = document.getElementById("score");
   const target = document.getElementById("target");
+const target = document.getElementById("target");
+"
+let isVisible = false;
 
-  let isVisible = false;
+  
 
   
   function showTarget() {
