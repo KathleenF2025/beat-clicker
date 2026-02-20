@@ -7,17 +7,24 @@
 </head>
 <body>
 
- <h1>Beat Clicker</h1>
+  <h1>Beat Clicker</h1>
 
-<p>Score: <span id="score">0</span></p>
+  <p>Score: <span id="score">0</span></p>
 
-<div id="game-area">
-  <div id="target"></div>
-</div>
+  <div class="controls">
+    <button id="startBtn">Start Game</button>
+    <button id="stopBtn">Stop Game</button>
+  </div>
 
-<script src="script.js"></script>
+  <div id="game-area">
+    <div id="target"></div>
+  </div>
 
+  <audio id="bgMusic" src="assets/music.mp3" loop></audio>
+
+  <script src="script.js"></script>
 
 </body>
+
 
 </html>
