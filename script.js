@@ -79,6 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (timeSinceSpawn <= visibleDuration) {
       score += 2;
+      target.style.background = "lime";
+
+setTimeout(() => {
+  target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
+}, 100);
       scoreDisplay.textContent = score;
       target.style.display = "none";
 
