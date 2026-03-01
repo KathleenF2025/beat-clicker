@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 setTimeout(() => {
   target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
-}, 100);
+}, 120);
       scoreDisplay.textContent = score;
       target.style.display = "none";
 
