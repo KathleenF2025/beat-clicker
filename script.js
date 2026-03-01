@@ -81,15 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
       score += 2;
       scoreDisplay.textContent = score;
       
-      target.style.background = "lime";
+ // Force immediate visual feedback
+target.style.background = "lime";
 
-    setTimeout(() => {
-      target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
-      target.style.display = "none";
-    }, 120);
-      
-      
+// Cancel current hide behavior by clearing display first
+target.style.display = "block";
 
+setTimeout(() => {
+  target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
+  target.style.display = "none";
+}, 150);
       // 🎯 Difficulty increases every 10 points
       if (score % 10 === 0 && spawnInterval > 1000) {
   
