@@ -79,13 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (timeSinceSpawn <= visibleDuration) {
       score += 2;
+      scoreDisplay.textContent = score;
+      
       target.style.background = "lime";
 
-setTimeout(() => {
-  target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
-}, 120);
-      scoreDisplay.textContent = score;
+    setTimeout(() => {
+      target.style.background = "radial-gradient(circle, #ff5252, #b71c1c)";
       target.style.display = "none";
+    }, 120);
+      
+      
 
       // 🎯 Difficulty increases every 10 points
       if (score % 10 === 0 && spawnInterval > 1000) {
